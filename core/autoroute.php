@@ -53,7 +53,7 @@ class autoroute{
     /*
     *   THE PATH TO LOOKUP AND WHAT WILL BE THE ACTUAL INCLUDING PATH
     */
-    $path = ROOT.'\\www\\';
+    $path = ROOT.DS.'www'.DS;
     $inc_path;
 
 

@@ -8,7 +8,25 @@ class InstallMarzipan
 
   function __construct()
   {
+
     if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['username']) && isset($_POST['password'])){
+
+
+      if(!file_exists('site/')){
+        mkdir('site');
+      }
+      if(!file_exists('site/config/')){
+        mkdir('site/config');
+      }
+      if(!file_exists('site/content/')){
+        mkdir('site/content');
+      }
+      if(!file_exists('site/files/')){
+        mkdir('site/files');
+      }
+      if(!file_exists('site/files/tmp/')){
+        mkdir('site/files/tmp');
+      }
 
       $str = $_POST['username'].':MRZPN:';
       $str .= md5($str.$_POST['password']);
