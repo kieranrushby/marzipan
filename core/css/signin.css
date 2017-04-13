@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900,900i');
+
+html, body{
+  font-family: 'Lato', sans-serif;
+  height: 100%;
+  background-color: #444;
+  background: linear-gradient(141deg, #8B3AC3 0%, #832BA7  51%);
+}
+
+.fill-height{
+  height: 100%;
+
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  transition: all .3s ease;
+}
+
+.card{
+  border-radius: 0;
+  box-shadow: 0 0 6px #511B67;
+  padding: 2.5rem;
+}
+
+.card-title{
+  font-weight: 900;
+  color: #555;
+  margin-bottom: 1.25rem;
+}
+
+.btn{
+  border-radius: 0;
+  line-height: 1.75;
+  letter-spacing: .1rem;
+}
+
+.btn-primary{
+  background-color: #444;
+  border-color: #444;
+}
+
+.btn-primary:hover,.btn-primary:focus,.btn-primary:active{
+  background-color: #222;
+  border-color: #222;
+}
+
+.form.waiting:before{
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(255,255,255,.7);
+  content: '';
+  z-index: 10;
+  justify-content: center;
+  align-items: center;
+}
+
+.form.waiting:after{
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -25px 0 0 -25px;
+  content: '';
+  z-index: 11;
+  width: 50px;
+	height: 50px;
+	border-radius: 25px;
+	border: 6px solid transparent;
+	border-left: 6px solid #511B67;
+	animation: spin .75s infinite linear;
+}
+
+@keyframes spin {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }
+}
+
+.form-control{
+  border-radius: 0;
+  padding: .75rem;
+}
