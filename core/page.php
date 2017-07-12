@@ -170,6 +170,18 @@ use Zend\Authentication\Adapter\Digest as AuthAdapter;
 
         if(file_exists($settings)){
           $this->pageSettings = json_decode(file_get_contents($settings));
+        } else {
+          $page_dir = ROOT.DS.'site'.DS.'content';
+          foreach(explode('/', $uri) as $dir){
+            $page_dir .= DS.$dir;
+            if(!file_exists($page_dir)){
+              mkdir($page_dir);
+            }
+          }
+          $pageSettings = new stdClass();
+          $pageSettings->page_title = '';
+          $pageSettings->page_script = '';
+          file_put_contents($settings, json_encode($pageSettings));
         }
 
     }
@@ -210,6 +222,11 @@ use Zend\Authentication\Adapter\Digest as AuthAdapter;
 
         if(file_exists($settings)){
           $this->globalSettings = json_decode(file_get_contents($settings));
+        } else {
+          $globalSettings = new stdClass();
+          $globalSettings->website_name = '';
+          $globalSettings->global_script = '';
+          file_put_contents($settings, json_encode($globalSettings));
         }
 
     }
@@ -227,6 +244,9 @@ use Zend\Authentication\Adapter\Digest as AuthAdapter;
 
         if(file_exists($settings)){
           $this->navigationSettings = json_decode(file_get_contents($settings));
+        } else {
+          $navigationSettings = [];
+          file_put_contents($settings, json_encode($navigationSettings));
         }
 
     }
@@ -392,6 +412,7 @@ use Zend\Authentication\Adapter\Digest as AuthAdapter;
     */
     private function _save(){
 
+
       if($this->hasLogin()){
 
         /*
@@ -407,7 +428,20 @@ use Zend\Authentication\Adapter\Digest as AuthAdapter;
               $config = HTMLPurifier_Config::createDefault();
               $purifier = new HTMLPurifier($config);
               $clean_html = $purifier->purify($value);
-              file_put_contents(ROOT.'/site/content/'.$name.'.html', $clean_html);
+
+              $parts = explode('/', $name);
+              $path = ROOT.DS.'site'.DS.'content';
+
+              for($i = 0; $i < count($parts); $i++){
+                $path .= DS.$parts[$i];
+                if($i == (count($parts)-1)){
+                  file_put_contents($path.'.html', $clean_html);
+                } else {
+                  if(!file_exists($path)){
+                    mkdir($path);
+                  }
+                }
+              }
           }
 
         }
@@ -439,11 +473,14 @@ use Zend\Authentication\Adapter\Digest as AuthAdapter;
 
           $uri = $this->_getContentURI();
 
+          /*
           foreach ($_POST as $name => $value) {
               $config = HTMLPurifier_Config::createDefault();
               $purifier = new HTMLPurifier($config);
               $clean_html = $purifier->purify($value);
           }
+          */
+
 
           $settings = new stdClass();
           $settings->page_title = isset($_POST['mrzpn-menu-page-title'])?$_POST['mrzpn-menu-page-title']:'';

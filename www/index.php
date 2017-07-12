@@ -18,6 +18,8 @@
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 
+		<title><?= $page->title(); ?> - <?php $page->website_name(); ?></title>
+
 	</head>
 	<body>
 
@@ -40,11 +42,13 @@
 
 						<div class="6u 12u$(medium)">
 							<?php
-								$page->contentBlock("section-one-image");
+								$page->contentBlock("section-one-left");
 							?>
 						</div>
 						<div class="6u$ 12u$(medium) important(medium)">
-							<img src="files/pic01.jpg" alt="" />
+							<?php
+								$page->contentBlock("section-one-right");
+							?>
 						</div>
 					</div>
 				</div>
@@ -65,13 +69,9 @@
 							</ul>
 						</div>
 						<div class="6u$ 12u$(medium)">
-							<header class="major">
-								<h2>Lorem ipsum dolor adipiscing<br />
-								amet dolor consequat</h2>
-							</header>
-							<p>Adipiscing a commodo ante nunc accumsan interdum mi ante adipiscing. A nunc lobortis non nisl amet vis volutpat aclacus nascetur ac non. Lorem curae eu ante amet sapien in tempus ac. Adipiscing id accumsan adipiscing ipsum.</p>
-							<p>Blandit faucibus proin. Ac aliquam integer adipiscing enim non praesent vis commodo nunc phasellus cubilia ac risus accumsan. Accumsan blandit. Lobortis phasellus non lobortis dit varius mi varius accumsan lobortis. Blandit ante aliquam lacinia lorem lobortis semper morbi col faucibus vitae integer placerat accumsan orci eu mi odio tempus adipiscing adipiscing adipiscing curae consequat feugiat etiam dolore.</p>
-							<p>Adipiscing a commodo ante nunc accumsan interdum mi ante adipiscing. A nunc lobortis non nisl amet vis volutpat aclacus nascetur ac non. Lorem curae eu ante amet sapien in tempus ac. Adipiscing id accumsan adipiscing ipsum.</p>
+							<?php
+								$page->contentBlock("section-two-right");
+							?>
 						</div>
 					</div>
 				</div>
@@ -80,34 +80,26 @@
 		<!-- Three -->
 			<section id="three" class="main style1 special">
 				<div class="container">
-					<header class="major">
-						<h2>Adipiscing amet consequat</h2>
-					</header>
-					<p>Ante nunc accumsan et aclacus nascetur ac ante amet sapien sed.</p>
+					<div>
+						<?php
+							$page->contentBlock("section-three-top");
+						?>
+					</div>
 					<div class="row 150%">
 						<div class="4u 12u$(medium)">
-							<span class="image fit"><img src="files/pic02.jpg" alt="" /></span>
-							<h3>Magna feugiat lorem</h3>
-							<p>Adipiscing a commodo ante nunc magna lorem et interdum mi ante nunc lobortis non amet vis sed volutpat et nascetur.</p>
-							<ul class="actions">
-								<li><a href="#" class="button">More</a></li>
-							</ul>
+							<?php
+								$page->contentBlock("section-three-col-1");
+							?>
 						</div>
 						<div class="4u 12u$(medium)">
-							<span class="image fit"><img src="files/pic03.jpg" alt="" /></span>
-							<h3>Magna feugiat lorem</h3>
-							<p>Adipiscing a commodo ante nunc magna lorem et interdum mi ante nunc lobortis non amet vis sed volutpat et nascetur.</p>
-							<ul class="actions">
-								<li><a href="#" class="button">More</a></li>
-							</ul>
+							<?php
+								$page->contentBlock("section-three-col-2");
+							?>
 						</div>
 						<div class="4u$ 12u$(medium)">
-							<span class="image fit"><img src="files/pic04.jpg" alt="" /></span>
-							<h3>Magna feugiat lorem</h3>
-							<p>Adipiscing a commodo ante nunc magna lorem et interdum mi ante nunc lobortis non amet vis sed volutpat et nascetur.</p>
-							<ul class="actions">
-								<li><a href="#" class="button">More</a></li>
-							</ul>
+							<?php
+								$page->contentBlock("section-three-col-3");
+							?>
 						</div>
 					</div>
 				</div>
@@ -116,14 +108,9 @@
 		<!-- Four -->
 			<section id="four" class="main style2 special">
 				<div class="container">
-					<header class="major">
-						<h2>Ipsum feugiat consequat?</h2>
-					</header>
-					<p>Sed lacus nascetur ac ante amet sapien.</p>
-					<ul class="actions uniform">
-						<li><a href="#" class="button special">Sign Up</a></li>
-						<li><a href="#" class="button">Learn More</a></li>
-					</ul>
+					<?php
+						$page->contentBlock("section-four");
+					?>
 				</div>
 			</section>
 
