@@ -1,8 +1,6 @@
 <?php defined('MRZPN_EXECUTE') or die('Access Denied.'); ?>
 <?php $page = new page(); ?>
 
-<title><?= $page->title(); ?></title>
-
 <?php if($page->hasLogin()): ?>
 <link rel="stylesheet" type="text/css" href="<?= WEBROOT ?>/core/src/content_tools/content-tools.min.css" />
 <link rel="stylesheet" type="text/css" href="<?= WEBROOT ?>/core/css/core-menu.css" />

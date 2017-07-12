@@ -1,0 +1,46 @@
+<IfModule mod_rewrite.c>
+
+RewriteEngine On
+
+## Begin RewriteBase
+# If you are getting 500 or 404 errors on subpages, uncomment the RewriteBase entry
+# and change the '/' to your appropriate subfolder.
+##
+
+# RewriteBase /
+
+## End - RewriteBase
+
+
+## Begin - Index
+# If the requested path and file is not /index.php and the request
+# has not already been internally rewritten to the index.php script
+RewriteCond %{REQUEST_URI} !^/index\.php
+# and the requested path and file doesn't directly match a physical file
+RewriteCond %{REQUEST_FILENAME} !-f
+# and the requested path and file doesn't directly match a physical folder
+RewriteCond %{REQUEST_FILENAME} !-d
+# internally rewrite the request to the index.php script
+RewriteRule .* index.php [L]
+## End - Index
+
+## Begin - Security
+# Block all direct access for these folders
+RewriteRule ^(site)/(config)/(.*) error [F]
+RewriteRule ^(site)/(content)/(.*) error [F]
+# Block access to specific file types for these system folders
+RewriteRule ^(core)/(.*)\.(txt|xml|md|html|yaml|php|pl|py|cgi|twig|sh|bat)$ error [F]
+# Block all direct access to .md files:
+RewriteRule \.md$ error [F]
+# Block all direct access to files and folders beginning with a dot
+RewriteRule (^|/)\.(?!well-known) - [F]
+# Block access to specific files in the root folder
+RewriteRule ^(LICENSE.txt|composer.lock|composer.json|\.htaccess)$ error [F]
+## End - Security
+
+</IfModule>
+
+# Begin - Prevent Browsing and Set Default Resources
+Options -Indexes
+DirectoryIndex index.php index.html index.htm
+# End - Prevent Browsing and Set Default Resources

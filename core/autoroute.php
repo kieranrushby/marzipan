@@ -66,6 +66,29 @@ class autoroute{
     */
     if(!file_exists(ROOT.DS.'site'.DS.'config'.DS.'auth.txt')){
 
+
+      // Setup the directories if they don't exist
+      if(!file_exists('site/')){
+        mkdir('site/');
+      }
+
+      if(!file_exists('site/config')){
+        mkdir('site/config');
+      }
+
+      if(!file_exists('site/content')){
+        mkdir('site/content');
+      }
+
+      if(!file_exists('site/files')){
+        mkdir('site/files');
+      }
+
+      if(!file_exists('site/files/_tmp')){
+        mkdir('site/files/_tmp');
+      }
+
+      // show the install page
       include_once(ROOT.DS.'core'.DS.'install.php');
 
     } elseif(count($uri_parts) == 0){
