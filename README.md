@@ -11,12 +11,12 @@ Installation is quite simple
 CMS methods
 
 Create a content block - Pass in the unique name of the content block to make an editable area
-<?php $page->contentBlock(string $name [, array $options]); ?>
+$page->contentBlock(string $name [, array $options]);
 
 Get the page name from the settings
-<?php $page->title(); ?>
+$page->title();
 
 Get the website name from settings
-<?php $page->website_name(); ?>
+$page->website_name();
 
 Page and Global scripts from the settings are included in the header automatically
